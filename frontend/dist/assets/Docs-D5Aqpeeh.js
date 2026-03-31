@@ -1,4 +1,4 @@
-import{j as e,m as a,r as l}from"./index-B5F1qKwG.js";import{N as n}from"./Navbar-DtoTc0oU.js";const i=[{method:"POST",path:"/api/tickets",desc:"Create a new support ticket",body:`{
+import{j as e,m as a,r as l}from"./index-CbStD9n8.js";import{N as n}from"./Navbar-DnT9QH0b.js";const i=[{method:"POST",path:"/api/tickets",desc:"Create a new support ticket",body:`{
   "name": "Jane Doe",
   "email": "jane@example.com",
   "issue": "Login not working"
