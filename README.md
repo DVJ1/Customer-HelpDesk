@@ -24,3 +24,6 @@ npm start
 cd frontend  
 npm install  
 npm run dev  
+## Preview
+
+![Dashboard](assets/dashboard.png)
