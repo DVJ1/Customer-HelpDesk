@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-light: #DBEAFE;
+  --slate-dark: #0F172A;
+  --slate-medium: #334155;
+  --slate-light: #E2E8F0;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --bg-main: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --sidebar-w: 240px;
+}
+
+.dark {
+  --bg-main: #0F172A;
+  --bg-card: #1E293B;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --slate-light: #334155;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-sm shadow-primary/20 hover:bg-primary-hover hover:-translate-y-0.5 hover:shadow-primary/30 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-white text-slate-700 text-sm font-medium rounded-lg border border-slate-200 transition-all duration-200 shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-700 dark:hover:border-slate-600;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 text-sm font-medium rounded-lg border border-red-100 transition-all duration-200 hover:bg-red-100 hover:-translate-y-0.5 active:scale-[0.98] dark:bg-red-900/20 dark:border-red-900/50 dark:hover:bg-red-900/40;
+  }
+
+  .input {
+    @apply w-full px-3 py-2.5 rounded-lg border border-slate-200 bg-white shadow-sm text-sm text-slate-800 placeholder-slate-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary;
+  }
+
+  .dark .input {
+    @apply bg-slate-800 border-slate-700 shadow-none text-slate-100 placeholder-slate-500 focus:ring-primary/50 focus:border-primary-light;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-slate-100 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.05)] transition-all duration-200;
+  }
+
+  .dark .card {
+    @apply bg-slate-800 border-slate-700/60 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.4)];
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold uppercase tracking-wider transition-colors;
+  }
+
+  .badge-open {
+    @apply badge bg-blue-50 text-blue-600 border border-blue-100 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20;
+  }
+
+  .badge-in-progress {
+    @apply badge bg-amber-50 text-amber-600 border border-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20;
+  }
+
+  .badge-resolved {
+    @apply badge bg-emerald-50 text-emerald-600 border border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20;
+  }
+
+  .badge-tag {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600;
+  }
+
+  .skeleton {
+    @apply animate-skeleton rounded bg-slate-200;
+  }
+
+  .dark .skeleton {
+    @apply bg-slate-700;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-400 transition-all duration-150 hover:text-white hover:bg-white/10 cursor-pointer;
+  }
+
+  .sidebar-link.active {
+    @apply text-white bg-white/15;
+  }
+}
