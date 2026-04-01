@@ -37,7 +37,7 @@ export default function UserPortal() {
   const fetchTickets = useCallback(async () => {
     if (!user?.email) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/tickets?email=${user.email}`);
+      const res = await axios.get(`https://customer-helpdesk.onrender.com/api/tickets?email=${user.email}`);
       setTickets(res.data);
     } catch {
       toast("Could not load your tickets", "error");

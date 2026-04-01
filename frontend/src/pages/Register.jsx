@@ -35,7 +35,7 @@ export default function Register() {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/register", form);
+      await axios.post("https://customer-helpdesk.onrender.com/api/register", form);
       toast("Account created! Please sign in.", "success");
       navigate("/login");
     } catch (err) {

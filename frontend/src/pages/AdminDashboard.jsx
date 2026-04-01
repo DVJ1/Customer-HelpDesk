@@ -82,7 +82,7 @@ function CreateModal({ onClose, onCreated }) {
     if (Object.keys(v).length) { setErrors(v); return; }
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/tickets", { ...form, status: "Open" });
+      await axios.post("https://customer-helpdesk.onrender.com/api/tickets", { ...form, status: "Open" });
       toast("Ticket created!", "success");
       onCreated();
       onClose();
@@ -187,7 +187,7 @@ export default function AdminDashboard() {
         return;
       }
       setUser(parsedUser);
-      axios.get("http://localhost:5000/api/users").then(res => setUsers(res.data)).catch(() => {});
+      axios.get("https://customer-helpdesk.onrender.com/api/users").then(res => setUsers(res.data)).catch(() => {});
     } catch {
       navigate("/admin-login");
     }
@@ -205,7 +205,7 @@ export default function AdminDashboard() {
 
   const fetchTickets = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/tickets");
+      const res = await axios.get("https://customer-helpdesk.onrender.com/api/tickets");
       setTickets(res.data);
     } catch {
       toast("Could not load tickets", "error");
@@ -218,7 +218,7 @@ export default function AdminDashboard() {
 
   const deleteTicket = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tickets/${id}`);
+      await axios.delete(`https://customer-helpdesk.onrender.com/api/tickets/${id}`);
       setTickets(t => t.filter(x => x._id !== id));
       toast("Ticket deleted", "info");
     } catch {
@@ -232,7 +232,7 @@ export default function AdminDashboard() {
     setTickets(t => t.map(x => x._id === id ? { ...x, status } : x));
     
     try {
-      const res = await axios.put(`http://localhost:5000/api/tickets/${id}`, { 
+      const res = await axios.put(`https://customer-helpdesk.onrender.com/api/tickets/${id}`, { 
         status,
         actionUser: user?.name || "System"
       });

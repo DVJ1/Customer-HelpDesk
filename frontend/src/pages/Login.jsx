@@ -33,7 +33,7 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/login", form);
+      const res = await axios.post("https://customer-helpdesk.onrender.com/api/login", form);
       localStorage.setItem("user", JSON.stringify(res.data));
       toast("Welcome back, " + res.data.name + "! 👋", "success");
       navigate("/");

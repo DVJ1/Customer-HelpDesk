@@ -42,7 +42,7 @@ export default function Tickets() {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/tickets", { ...form, status: "Open" });
+      await axios.post("https://customer-helpdesk.onrender.com/api/tickets", { ...form, status: "Open" });
       toast("Ticket submitted successfully!", "success");
       setSubmitted(true);
       setForm({ name: "", email: "", issue: "" });
