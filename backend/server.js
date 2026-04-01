@@ -208,6 +208,35 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+// Setup: Create initial admin user (run once, then remove or secure this endpoint)
+app.post("/api/setup/admin", async (req, res) => {
+  try {
+    const { name, email, password, secretKey } = req.body;
+
+    // Simple security check - change this secret key!
+    if (secretKey !== "setup123") {
+      return res.status(403).json({ message: "Invalid setup key" });
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+    const newAdmin = new User({
+      name,
+      email,
+      password,
+      role: "admin"
+    });
+
+    await newAdmin.save();
+    res.status(201).json({ message: "Admin user created successfully", email });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Login Admin (Strict)
 app.post("/api/admin/login", async (req, res) => {
   try {
