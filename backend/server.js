@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -11,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect("mongodb://localhost:27017/customerHelpdesk")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/customerHelpdesk")
   .then(() => console.log("MongoDB Connected Successfully"))
   .catch((err) => console.log(err));
 
